@@ -1,8 +1,7 @@
 event = {0b1: "wink",
          0b10: "double blink",
          0b100: "close your eyes",
-         0b1000: "jump",
-         0b10000: "touch the nose"}
+         0b1000: "jump"}
 reverse = 0b10000
 binary = {v: k for k, v in event.items()}
 
@@ -12,7 +11,7 @@ def handshake(number):
         try:
             number = int(number, 2)
         except ValueError:
-            number = 0
+            return []
     if number < 0:
         return []
 
