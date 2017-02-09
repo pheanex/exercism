@@ -17,10 +17,7 @@ def verse(nr):
 
 
 def verse_recurse(nr):
-    if nr == 0:
-        return '{}.'.format(verses[nr][0])
-    else:
-        return '{}\nthat {} the '.format(verses[nr][0], verses[nr][1]) + verse_recurse(nr-1)
+    return '{}\nthat {} the '.format(verses[nr][0], verses[nr][1]) + verse_recurse(nr-1) if nr else '{}.'.format(verses[nr][0])
 
 
 def rhyme():
