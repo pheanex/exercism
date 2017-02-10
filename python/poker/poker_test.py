@@ -6,7 +6,8 @@ from poker import poker
 class PokerTest(unittest.TestCase):
     def test_one_hand(self):
         hand = '4S 5S 7H 8D JC'.split()
-        self.assertEqual([hand], poker([hand]))
+        biggest = poker([hand])
+        self.assertEqual([hand], biggest)
 
     def test_nothing_vs_one_pair(self):
         nothing = '4S 5H 6S 8D JH'.split()
@@ -93,6 +94,12 @@ class PokerTest(unittest.TestCase):
         straightFlushTo9 = '5S 7S 8S 9S 6S'.split()
         self.assertEqual([straightFlushTo9],
                          poker([straightFlushTo8, straightFlushTo9]))
+
+    def test_two_straight_flushes2(self):
+        straightFlushTo8 = '4H 6H 7H 8H 5H'.split()
+        straightFlushTo9 = '5S 7S 8S 9S 6S'.split()
+        self.assertEqual([straightFlushTo9],
+                         poker([straightFlushTo9, straightFlushTo8]))
 
     def test_three_hand_with_tie(self):
         spadeStraightTo9 = "9S 8S 7S 6S 5S".split()
