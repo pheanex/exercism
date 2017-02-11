@@ -53,19 +53,18 @@ class Hand:
                 return True
         return False
 
-    @staticmethod
-    def hand_type(hand):
-        most_card_count = Counter(hand.ranks).most_common(1)[0][1]
-        most_card_count_2nd = Counter(hand.ranks).most_common(2)[1][1]
-        if len(set(hand.colors)) == 1 and ''.join(hand.ranks) in ''.join(card_ranks):
+    def hand_type(self):
+        most_card_count = Counter(self.ranks).most_common(1)[0][1]
+        most_card_count_2nd = Counter(self.ranks).most_common(2)[1][1]
+        if len(set(self.colors)) == 1 and ''.join(self.ranks) in ''.join(card_ranks):
             return 'straight_flush'
         if most_card_count == 4:
             return 'four_of_a_kind'
         if most_card_count == 3 and most_card_count_2nd == 2:
             return 'full_house'
-        if len(set(hand.colors)) == 1:
+        if len(set(self.colors)) == 1:
             return 'flush'
-        if ''.join(hand.ranks) in ''.join(card_ranks) or 'A' in hand.ranks and ''.join(hand.ranks[:-1]) in ''.join(card_ranks):
+        if ''.join(self.ranks) in ''.join(card_ranks) or 'A' in self.ranks and ''.join(self.ranks[:-1]) in ''.join(card_ranks):
             return 'straight'
         if most_card_count == 3:
             return 'three_of_a_kind'
