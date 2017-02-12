@@ -65,7 +65,7 @@ class ListOpsTest(unittest.TestCase):
         )
 
     def test_reverse_empty(self):
-        self.assertEqual([], list_ops.reverse(()))
+        self.assertEqual((), list_ops.reverse(()))
 
     # tests for append
     def test_append_tuple(self):
