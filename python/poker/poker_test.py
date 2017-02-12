@@ -6,8 +6,7 @@ from poker import poker
 class PokerTest(unittest.TestCase):
     def test_one_hand(self):
         hand = '4S 5S 7H 8D JC'.split()
-        biggest = poker([hand])
-        self.assertEqual([hand], biggest)
+        self.assertEqual([hand], poker([hand]))
 
     def test_nothing_vs_one_pair(self):
         nothing = '4S 5H 6S 8D JH'.split()
@@ -30,17 +29,17 @@ class PokerTest(unittest.TestCase):
         self.assertEqual([doublePair2and8],
                          poker([doublePair2and8, doublePair4and5]))
 
-    def test_two_double_pair2(self):
+    def test_two_double_pair_lower(self):
         doublePair2and8 = '2S 8H 2S 8C JH'.split()
         doublePair3and8 = '4S 3H 8S 8D 3H'.split()
         self.assertEqual([doublePair3and8],
                          poker([doublePair2and8, doublePair3and8]))
 
-    def test_two_double_pair3(self):
-        doublePair2and8 = '2S 8H 2S 8C JH'.split()
-        doublePair3and8 = '4S 3H 8S 8D 3H'.split()
-        self.assertEqual([doublePair3and8],
-                         poker([doublePair3and8, doublePair2and8]))
+    def test_two_double_pair_and_high(self):
+        doublePair2and8 = '2S 8H 2C 8C 3H'.split()
+        doublePair2and8high = '2D 2H 8S 8D AH'.split()
+        self.assertEqual([doublePair2and8high],
+                         poker([doublePair2and8high, doublePair2and8]))
 
     def test_double_pair_vs_three(self):
         doublePair2and8 = '2S 8H 2S 8D JH'.split()
@@ -106,12 +105,6 @@ class PokerTest(unittest.TestCase):
         straightFlushTo9 = '5S 7S 8S 9S 6S'.split()
         self.assertEqual([straightFlushTo9],
                          poker([straightFlushTo8, straightFlushTo9]))
-
-    def test_two_straight_flushes2(self):
-        straightFlushTo8 = '4H 6H 7H 8H 5H'.split()
-        straightFlushTo9 = '5S 7S 8S 9S 6S'.split()
-        self.assertEqual([straightFlushTo9],
-                         poker([straightFlushTo9, straightFlushTo8]))
 
     def test_three_hand_with_tie(self):
         spadeStraightTo9 = "9S 8S 7S 6S 5S".split()
