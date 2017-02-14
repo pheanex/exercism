@@ -26,7 +26,8 @@ class DiamondTests(unittest.TestCase):
                   '  C   C  ',
                   '   B B   ',
                   '    A    ']
-        self.assertMultiLineEqual('\n'.join(result) + '\n', make_diamond('E'))
+        a=make_diamond('E')
+        self.assertMultiLineEqual('\n'.join(result) + '\n', a)
 
 
 if __name__ == '__main__':
