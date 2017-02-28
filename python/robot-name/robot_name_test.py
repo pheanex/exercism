@@ -17,7 +17,6 @@ class RobotTest(unittest.TestCase):
 
     def test_name_sticks(self):
         robot = Robot()
-        robot.name
         self.assertEqual(robot.name, robot.name)
 
     def test_different_robots_have_different_names(self):
