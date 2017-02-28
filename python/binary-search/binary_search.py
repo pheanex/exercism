@@ -1,10 +1,10 @@
-def binary_search(list, element):
-    left, right = 0, len(list) - 1
+def binary_search(search_list, element):
+    left, right = 0, len(search_list) - 1
     mid = (left + right) // 2
     while left <= right:
-        if list[mid] < element:
+        if search_list[mid] < element:
             left = mid + 1
-        elif list[mid] > element:
+        elif search_list[mid] > element:
             right = mid - 1
         else:
             return mid
