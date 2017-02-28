@@ -1,6 +1,5 @@
 def saddle_points(matrix):
-    if len(matrix):
-        row_length = len(matrix[0])
+    row_length = len(matrix[0]) if len(matrix) else 0
     for row in matrix:
         if row_length != len(row):
             raise ValueError
