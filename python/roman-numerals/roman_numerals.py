@@ -15,12 +15,10 @@ def numeral(number):
         floordiv = number // i
         if 0 < floordiv < 4:
             roman += floordiv*convert[i]
-        elif floordiv == 4:
+        elif floordiv in (4, 9):
             roman += convert[i]+convert[(floordiv+1)*i]
         elif 4 < floordiv < 9:
             roman += convert[5*i] + (floordiv-5)*convert[i]
-        elif floordiv == 9:
-            roman += convert[i] + convert[(floordiv+1)*i]
         number -= floordiv*i
 
     return roman
