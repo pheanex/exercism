@@ -1,4 +1,5 @@
 points = {'win': 3, 'draw': 1, 'loss': 0}
+tableformat = '{:<31}|{:>3} |{:>3} |{:>3} |{:>3} |{:>3}'
 
 
 def tally(data):
@@ -27,7 +28,6 @@ def tally(data):
             scores[team]['matches_played'] += 1
             scores[team]['points'] = scores[team]['win'] * points['win'] + scores[team]['draw'] * points['draw']
 
-    tableformat = '{:31}| {:2} | {:>2} | {:>2} | {:>2} | {:>2}'
     table = tableformat.format('Team', 'MP', 'W', 'D', 'L', 'P')
     for team in sorted(sorted(scores), key=lambda x: scores[x]['points'], reverse=True):
         table += '\n' + tableformat.format(team,
