@@ -28,12 +28,12 @@ def tally(data):
             scores[team]['matches_played'] += 1
             scores[team]['points'] = scores[team]['win'] * points['win'] + scores[team]['draw'] * points['draw']
 
-    table = tableformat.format('Team', 'MP', 'W', 'D', 'L', 'P')
-    for team in sorted(sorted(scores), key=lambda x: scores[x]['points'], reverse=True):
-        table += '\n' + tableformat.format(team,
-                                           scores[team]['matches_played'],
-                                           scores[team]['win'],
-                                           scores[team]['draw'],
-                                           scores[team]['loss'],
-                                           scores[team]['points'])
-    return table
+    sorted_teams = sorted(sorted(scores), key=lambda x: -scores[x]['points'])
+    header = [tableformat.format('Team', 'MP', 'W', 'D', 'L', 'P')]
+    table = [tableformat.format(team,
+                                scores[team]['matches_played'],
+                                scores[team]['win'],
+                                scores[team]['draw'],
+                                scores[team]['loss'],
+                                scores[team]['points']) for team in sorted_teams]
+    return '\n'.join(header + table)
