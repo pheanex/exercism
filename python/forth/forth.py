@@ -3,55 +3,56 @@ class StackUnderflowError(Exception):
 
 
 def evaluate(input_data):
-    def process(stack):
-        if not any(stack):
+    def process(words):
+        if not any(words):
             return []
-        if not len(stack) > 0:
+        if not len(words) > 0:
             raise StackUnderflowError
-        if len(stack) == 1 and stack[-1].isdigit():
-            return int(stack[-1])
-        if stack[-1].lower() in alias:
-            return process(stack[:-1] + alias[stack[-1].lower()])
-        if stack[-1].lower() not in operators and stack[-1].lower() not in alias and not stack[-1].isdigit():
+        last_word = words[-1].lower()
+        if len(words) == 1 and last_word.isdigit():
+            return int(last_word)
+        if last_word in aliases:
+            return process(words[:-1] + aliases[last_word])
+        if last_word not in operators and last_word not in aliases and not last_word.isdigit():
             raise ValueError
-        if not len(stack) > 1:
+        if not len(words) > 1:
             raise StackUnderflowError
-        if stack[-1].lower() == "dup":
-            if stack[-2].isdigit():
-                return process(stack[:-2] + [stack[-2]] * 2)
-            substack = process(stack[:-1])
-            return substack[:-1] + [substack[-1]] * 2
-        if stack[-1].lower() == "drop":
-            return process(stack[:-2])
-        if all(element.isdigit() for element in stack):
-            return [int(element) for element in stack]
-        if not len(stack) > 2:
+        if last_word == "dup":
+            if words[-2].isdigit():
+                return process(words[:-2] + [words[-2]] * 2)
+            sub_stack = process(words[:-1])
+            return sub_stack[:-1] + [sub_stack[-1]] * 2
+        if last_word == "drop":
+            return process(words[:-2])
+        if all(element.isdigit() for element in words):
+            return [int(element) for element in words]
+        if not len(words) > 2:
             raise StackUnderflowError
-        if stack[-1].lower() == "over":
-            return process(stack[:-1] + [stack[-3]])
-        if stack[-1].lower() == "swap":
-            return process(stack[:-3] + [stack[-2]] + [stack[-3]])
-        if stack[-1] == '+':
-            return process(stack[:-2]) + int(stack[-2])
-        if stack[-1] == '-':
-            return process(stack[:-2]) - int(stack[-2])
-        if stack[-1] == '/':
-            return process(stack[:-2]) // int(stack[-2])
-        if stack[-1] == '*':
-            return process(stack[:-2]) * int(stack[-2])
+        if last_word == "over":
+            return process(words[:-1] + [words[-3]])
+        if last_word == "swap":
+            return process(words[:-3] + [words[-2]] + [words[-3]])
+        if last_word == '+':
+            return process(words[:-2]) + int(words[-2])
+        if last_word == '-':
+            return process(words[:-2]) - int(words[-2])
+        if last_word == '/':
+            return process(words[:-2]) // int(words[-2])
+        if last_word == '*':
+            return process(words[:-2]) * int(words[-2])
 
     operators = ['+', '-', '/', '*', 'dup', 'drop', 'over', 'swap']
-    clean_stack = []
-    alias = dict()
+    stack = []
+    aliases = dict()
     for string in input_data:
         if string.startswith(':'):
             words = string.split()
-            name, replacement = words[1], words[2:-1]
+            name, replacement = words[1].lower(), words[2:-1]
             if name.isdigit():
                 raise ValueError
-            alias[name.lower()] = replacement
+            aliases[name] = replacement
         else:
             for word in string.split():
-                clean_stack.append(word)
-    clean_stack = process(clean_stack)
-    return clean_stack if type(clean_stack) is list else [clean_stack]
+                stack.append(word)
+    stack = process(stack)
+    return stack if type(stack) is list else [stack]
