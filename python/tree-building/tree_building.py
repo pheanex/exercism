@@ -11,20 +11,18 @@ class Node:
 
 
 def BuildTree(records):
-    nodes = {}
     if set(record.node_id for record in records) != set(range(len(records))):
         raise ValueError('Index not continuous')
-    for record in records:
-        nodes[record.node_id] = Node(record.node_id)
+    nodes = {record.node_id: Node(record.node_id) for record in records}
     for record in sorted(records, key=lambda r: r.node_id):
         parent_id = record.parent_id
         child_id = record.node_id
-        if child_id == 0 and parent_id != 0:
-            raise ValueError('Parent of root is not itself')
         if child_id < parent_id:
             raise ValueError('Parent ID > Child ID')
         if 0 != child_id == parent_id:
             raise ValueError('Cycle')
+        if child_id == 0 and parent_id != 0:
+            raise ValueError('Parent of root is not itself')
         if child_id == parent_id == 0:
             continue
         parent = nodes[parent_id]
