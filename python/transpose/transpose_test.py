@@ -118,182 +118,146 @@ class TransposeTests(unittest.TestCase):
             "\n".join(expected)
         )
 
-    def test_mixed_line_length(self):
+    def test_square(self):
         input_line = [
-            "The longest line.",
-            "A long line.",
-            "A longer line.",
-            "A line."
+            "HEART",
+            "EMBER",
+            "ABUSE",
+            "RESIN",
+            "TREND"
         ]
         expected = [
-            "TAAA",
-            "h   ",
-            "elll",
-            " ooi",
-            "lnnn",
-            "ogge",
-            "n e.",
-            "glr",
-            "ei ",
-            "snl",
-            "tei",
-            " .n",
-            "l e",
-            "i .",
-            "n",
-            "e",
-            "."
+            "HEART",
+            "EMBER",
+            "ABUSE",
+            "RESIN",
+            "TREND"
         ]
-
         self.assertEqual(
             transpose("\n".join(input_line)),
             "\n".join(expected)
         )
 
+    def test_rectangle(self):
+        input_line = [
+            "FRACTURE",
+            "OUTLINED",
+            "BLOOMING",
+            "SEPTETTE"
+        ]
+        expected = [
+            "FOBS",
+            "RULE",
+            "ATOP",
+            "CLOT",
+            "TIME",
+            "UNIT",
+            "RENT",
+            "EDGE"
+        ]
+        self.assertEqual(
+            transpose("\n".join(input_line)),
+            "\n".join(expected)
+        )
 
-def test_square(self):
-    input_line = [
-        "HEART",
-        "EMBER",
-        "ABUSE",
-        "RESIN",
-        "TREND"
-    ]
-    expected = [
-        "HEART",
-        "EMBER",
-        "ABUSE",
-        "RESIN",
-        "TREND"
-    ]
-    self.assertEqual(
-        transpose("\n".join(input_line)),
-        "\n".join(expected)
-    )
+    def test_triangle(self):
+        input_line = [
+            "T",
+            "EE",
+            "AAA",
+            "SSSS",
+            "EEEEE",
+            "RRRRRR"
+        ]
+        expected = [
+            "TEASER",
+            " EASER",
+            "  ASER",
+            "   SER",
+            "    ER",
+            "     R"
+        ]
+        self.assertEqual(
+            transpose("\n".join(input_line)),
+            "\n".join(expected)
+        )
 
-
-def test_rectangle(self):
-    input_line = [
-        "FRACTURE",
-        "OUTLINED",
-        "BLOOMING",
-        "SEPTETTE"
-    ]
-    expected = [
-        "FOBS",
-        "RULE",
-        "ATOP",
-        "CLOT",
-        "TIME",
-        "UNIT",
-        "RENT",
-        "EDGE"
-    ]
-    self.assertEqual(
-        transpose("\n".join(input_line)),
-        "\n".join(expected)
-    )
-
-
-def test_triangle(self):
-    input_line = [
-        "T",
-        "EE",
-        "AAA",
-        "SSSS",
-        "EEEEE",
-        "RRRRRR"
-    ]
-    expected = [
-        "TEASER",
-        " EASER",
-        "  ASER",
-        "   SER",
-        "    ER",
-        "     R"
-    ]
-    self.assertEqual(
-        transpose("\n".join(input_line)),
-        "\n".join(expected)
-    )
-
-
-def test_many_lines(self):
-    input_line = [
-        "Chor. Two households, both alike in dignity,",
-        "In fair Verona, where we lay our scene,",
-        "From ancient grudge break to new mutiny,",
-        "Where civil blood makes civil hands unclean.",
-        "From forth the fatal loins of these two foes",
-        "A pair of star-cross'd lovers take their life;",
-        "Whose misadventur'd piteous overthrows",
-        "Doth with their death bury their parents' strife.",
-        "The fearful passage of their death-mark'd love,",
-        "And the continuance of their parents' rage,",
-        "Which, but their children's end, naught could remove,",
-        "Is now the two hours' traffic of our stage;",
-        "The which if you with patient ears attend,",
-        "What here shall miss, our toil shall strive to mend."
-    ]
-    expected = [
-        "CIFWFAWDTAWITW",
-        "hnrhr hohnhshh",
-        "o oeopotedi ea",
-        "rfmrmash  cn t",
-        ".a e ie fthow ",
-        " ia fr weh,whh",
-        "Trnco miae  ie",
-        "w ciroitr btcr",
-        "oVivtfshfcuhhe",
-        " eeih a uote  ",
-        "hrnl sdtln  is",
-        "oot ttvh tttfh",
-        "un bhaeepihw a",
-        "saglernianeoyl",
-        "e,ro -trsui ol",
-        "h uofcu sarhu ",
-        "owddarrdan o m",
-        "lhg to'egccuwi",
-        "deemasdaeehris",
-        "sr als t  ists",
-        ",ebk 'phool'h,",
-        "  reldi ffd   ",
-        "bweso tb  rtpo",
-        "oea ileutterau",
-        "t kcnoorhhnatr",
-        "hl isvuyee'fi ",
-        " atv es iisfet",
-        "ayoior trr ino",
-        "l  lfsoh  ecti",
-        "ion   vedpn  l",
-        "kuehtteieadoe ",
-        "erwaharrar,fas",
-        "   nekt te  rh",
-        "ismdsehphnnosa",
-        "ncuse ra-tau l",
-        " et  tormsural",
-        "dniuthwea'g t ",
-        "iennwesnr hsts",
-        "g,ycoi tkrttet",
-        "n ,l r s'a anr",
-        "i  ef  'dgcgdi",
-        "t  aol   eoe,v",
-        "y  nei sl,u; e",
-        ",  .sf to l   ",
-        "     e rv d  t",
-        "     ; ie    o",
-        "       f, r   ",
-        "       e  e  m",
-        "       .  m  e",
-        "          o  n",
-        "          v  d",
-        "          e  .",
-        "          ,"
-    ]
-    self.assertEqual(
-        transpose("\n".join(input_line)),
-        "\n".join(expected)
-    )
+    def test_many_lines(self):
+        input_line = [
+            "Chor. Two households, both alike in dignity,",
+            "In fair Verona, where we lay our scene,",
+            "From ancient grudge break to new mutiny,",
+            "Where civil blood makes civil hands unclean.",
+            "From forth the fatal loins of these two foes",
+            "A pair of star-cross'd lovers take their life;",
+            "Whose misadventur'd piteous overthrows",
+            "Doth with their death bury their parents' strife.",
+            "The fearful passage of their death-mark'd love,",
+            "And the continuance of their parents' rage,",
+            "Which, but their children's end, naught could remove,",
+            "Is now the two hours' traffic of our stage;",
+            "The which if you with patient ears attend,",
+            "What here shall miss, our toil shall strive to mend."
+        ]
+        expected = [
+            "CIFWFAWDTAWITW",
+            "hnrhr hohnhshh",
+            "o oeopotedi ea",
+            "rfmrmash  cn t",
+            ".a e ie fthow ",
+            " ia fr weh,whh",
+            "Trnco miae  ie",
+            "w ciroitr btcr",
+            "oVivtfshfcuhhe",
+            " eeih a uote  ",
+            "hrnl sdtln  is",
+            "oot ttvh tttfh",
+            "un bhaeepihw a",
+            "saglernianeoyl",
+            "e,ro -trsui ol",
+            "h uofcu sarhu ",
+            "owddarrdan o m",
+            "lhg to'egccuwi",
+            "deemasdaeehris",
+            "sr als t  ists",
+            ",ebk 'phool'h,",
+            "  reldi ffd   ",
+            "bweso tb  rtpo",
+            "oea ileutterau",
+            "t kcnoorhhnatr",
+            "hl isvuyee'fi ",
+            " atv es iisfet",
+            "ayoior trr ino",
+            "l  lfsoh  ecti",
+            "ion   vedpn  l",
+            "kuehtteieadoe ",
+            "erwaharrar,fas",
+            "   nekt te  rh",
+            "ismdsehphnnosa",
+            "ncuse ra-tau l",
+            " et  tormsural",
+            "dniuthwea'g t ",
+            "iennwesnr hsts",
+            "g,ycoi tkrttet",
+            "n ,l r s'a anr",
+            "i  ef  'dgcgdi",
+            "t  aol   eoe,v",
+            "y  nei sl,u; e",
+            ",  .sf to l   ",
+            "     e rv d  t",
+            "     ; ie    o",
+            "       f, r   ",
+            "       e  e  m",
+            "       .  m  e",
+            "          o  n",
+            "          v  d",
+            "          e  .",
+            "          ,"
+        ]
+        self.assertEqual(
+            transpose("\n".join(input_line)),
+            "\n".join(expected)
+        )
 
 
 if __name__ == '__main__':
