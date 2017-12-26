@@ -30,7 +30,7 @@ def say(number):
                 return say_under_20(number // 100) + " hundred and " + say_under_100(number % 100)
 
     if not 0 <= number <= 999999999999:
-        raise AttributeError("ERROR: Value not in range")
+        raise AttributeError("Value not in range")
 
     if number == 0:
         return "zero"
