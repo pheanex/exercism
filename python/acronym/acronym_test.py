@@ -12,7 +12,7 @@ class AcronymTest(unittest.TestCase):
         self.assertEqual('ROR', abbreviate('Ruby on Rails'))
 
     def test_camelcase(self):
-        self.assertEqual('HTML', abbreviate('HyperText Markup Language'))
+        self.assertEqual('HML', abbreviate('HyperText Markup Language'))
 
     def test_punctuation(self):
         self.assertEqual('FIFO', abbreviate('First In, First Out'))
