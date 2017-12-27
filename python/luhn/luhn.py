@@ -15,7 +15,8 @@ class Luhn:
 
     @staticmethod
     def create(number):
-        return int(str(number) + str((10 - sum(Luhn.double_number(number)) % 10) % 10))
+        return int(str(number) +
+                   str((10 - sum(Luhn.double_number(number)) % 10) % 10))
 
     @staticmethod
     def double_number(number):

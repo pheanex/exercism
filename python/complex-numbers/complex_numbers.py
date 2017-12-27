@@ -17,8 +17,8 @@ class ComplexNumber(object):
         return ComplexNumber(self.real - other.real, self.imaginary - other.imaginary)
 
     def div(self, other):
-        real = (self.real * other.real + self.imaginary * other.imaginary)/(pow(other.real, 2) + pow(other.imaginary, 2))
-        imaginary = (self.imaginary * other.real - self.real * other.imaginary)/(pow(other.real, 2) + pow(other.imaginary, 2))
+        real = (self.real * other.real + self.imaginary * other.imaginary) / (pow(other.real, 2) + pow(other.imaginary, 2))
+        imaginary = (self.imaginary * other.real - self.real * other.imaginary) / (pow(other.real, 2) + pow(other.imaginary, 2))
         return ComplexNumber(real, imaginary)
 
     def abs(self):

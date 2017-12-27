@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from wordcount import word_count
+from word_count import word_count
 
 
 # to be backwards compatible with the old Python 2.X
@@ -13,7 +13,6 @@ def decode_if_needed(string):
 
 
 class WordCountTests(unittest.TestCase):
-
     def test_count_one_word(self):
         self.assertEqual(
             {'word': 1},
@@ -83,6 +82,7 @@ class WordCountTests(unittest.TestCase):
             {decode_if_needed('до'): 1, decode_if_needed('свидания'): 1},
             word_count('до🖖свидания!')
         )
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -5,10 +5,10 @@ import string
 def shift(message, key="a", shift_right=True):
     message = [letter.lower() for letter in message if letter.isalpha()]
     for index, letter in enumerate(message):
-        delta = ord(key[index % len(key)])-97
+        delta = ord(key[index % len(key)]) - 97
         if not shift_right:
             delta *= -1
-        letter_shifted = chr(97+(ord(letter)-97+delta) % 26)
+        letter_shifted = chr(97 + (ord(letter) - 97 + delta) % 26)
         message[index] = letter_shifted
     return ''.join(message)
 

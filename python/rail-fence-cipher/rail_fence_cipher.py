@@ -3,7 +3,7 @@ from itertools import cycle, chain
 
 # Returns cycles like: 012321012321...
 def fence_cycle(nr_rails):
-    return cycle([x for x in range(nr_rails)]+[x for x in reversed(range(1, nr_rails-1))])
+    return cycle([x for x in range(nr_rails)] + [x for x in reversed(range(1, nr_rails - 1))])
 
 
 def encode(message, nr_rails):

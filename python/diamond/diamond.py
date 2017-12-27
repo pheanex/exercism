@@ -4,7 +4,7 @@ import string
 def make_diamond(char):
     width = 2 * (string.ascii_uppercase.index(char) + 1) - 1
     lines = []
-    for index, char in enumerate(string.ascii_uppercase[:string.ascii_uppercase.index(char)+1]):
+    for index, char in enumerate(string.ascii_uppercase[:string.ascii_uppercase.index(char) + 1]):
         if index:
             line = char + (2 * index - 1) * ' ' + char
         else:

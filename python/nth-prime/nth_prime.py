@@ -4,7 +4,7 @@ from functools import lru_cache
 
 @lru_cache(maxsize=None)
 def is_prime(number):
-    for i in range(2, ceil(sqrt(number+1))):
+    for i in range(2, ceil(sqrt(number + 1))):
         if number % i == 0:
             return False
     return True

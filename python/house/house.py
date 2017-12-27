@@ -1,4 +1,4 @@
-verses = [('house that Jack built',),
+verses = [('house that Jack built', ''),
           ('malt', 'lay in'),
           ('rat', 'ate'),
           ('cat', 'killed'),
@@ -17,7 +17,10 @@ def verse(nr):
 
 
 def verse_recurse(nr):
-    return '{}\nthat {} the '.format(verses[nr][0], verses[nr][1]) + verse_recurse(nr-1) if nr else '{}.'.format(verses[nr][0])
+    thing, verb = verses[nr]
+    if nr == 0:
+        return '{}.'.format(thing)
+    return '{}\nthat {} the '.format(thing, verb) + verse_recurse(nr - 1)
 
 
 def rhyme():

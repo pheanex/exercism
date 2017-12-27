@@ -8,7 +8,7 @@ def bottles(n):
 
 
 def verse(count):
-    nr_less = bottles(count-1)
+    nr_less = bottles(count - 1)
     line2 = 'Take one down and pass it around'
     if count == 0:
         nr_less = bottles(99)

@@ -10,16 +10,16 @@ ocr_numbers = {'0': (' _ ', '| |', '|_|', '   '),
                '9': (' _ ', '|_|', ' _|', '   ')}
 
 
-def number(l):
-    return ''.join(digit(d) for d in zip(*[[r[i:i + 3] for i in range(0, len(r), 3)] for r in l]))
+def number(line):
+    return ''.join(digit(d) for d in zip(*[[r[i:i + 3] for i in range(0, len(r), 3)] for r in line]))
 
 
-def digit(l):
-    if len(l) != 4 or [i for i in l if len(i) != 3]:
+def digit(m):
+    if len(m) != 4 or [i for i in m if len(i) != 3]:
         raise ValueError
-    for k, v in ocr_numbers.items():
-        if l == v:
-            return k
+    for key, value in ocr_numbers.items():
+        if m == value:
+            return key
     return '?'
 
 

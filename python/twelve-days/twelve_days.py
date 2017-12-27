@@ -17,11 +17,11 @@ def verse(nr):
         presents = ', '.join([sentence[i][1] for i in range(nr - 1, 0, -1)]) + ', and ' + sentence[0][1]
     else:
         presents = ', '.join([sentence[i][1] for i in range(nr - 1, -1, -1)])
-    return 'On the {} day of Christmas my true love gave to me, {}.\n'.format(sentence[nr-1][0], presents)
+    return 'On the {} day of Christmas my true love gave to me, {}.\n'.format(sentence[nr - 1][0], presents)
 
 
 def verses(start, stop):
-    return '\n'.join([verse(i) for i in range(start, stop+1)]) + '\n'
+    return '\n'.join([verse(i) for i in range(start, stop + 1)]) + '\n'
 
 
 def sing():

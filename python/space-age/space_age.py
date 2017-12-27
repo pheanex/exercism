@@ -2,7 +2,9 @@ def round_result(digits):
     def decorator(func):
         def wrapper(*args, **kwargs):
             return round(func(*args, **kwargs), digits)
+
         return wrapper
+
     return decorator
 
 

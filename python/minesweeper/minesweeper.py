@@ -3,8 +3,8 @@ def board(matrix):
         return [l[i] for l in lists]
 
     def increment_block(x, y):
-        for i in range(x-1, x+2):
-            for j in range(y-1, y+2):
+        for i in range(x - 1, x + 2):
+            for j in range(y - 1, y + 2):
                 counter_matrix[i][j] += 1
 
     if not matrix[0][0] == matrix[0][-1] == matrix[-1][0] == matrix[-1][-1] == '+' or \

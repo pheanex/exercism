@@ -7,7 +7,6 @@ import hello_world
 
 
 class HelloWorldTests(unittest.TestCase):
-
     def test_hello_without_name(self):
         self.assertEqual(
             'Hello, World!',
@@ -31,6 +30,7 @@ class HelloWorldTests(unittest.TestCase):
             'Hello, Jürgen!',
             hello_world.hello('Jürgen')
         )
+
 
 if __name__ == '__main__':
     unittest.main()

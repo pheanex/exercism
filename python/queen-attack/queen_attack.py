@@ -10,6 +10,6 @@ def board(white, black):
 
 def can_attack(white, black):
     valid_position(white, black)
-    if white[0] == black[0] or white[1] == black[1] or abs(white[0]-black[0]) == abs(white[1]-black[1]):
+    if white[0] == black[0] or white[1] == black[1] or abs(white[0] - black[0]) == abs(white[1] - black[1]):
         return True
     return False

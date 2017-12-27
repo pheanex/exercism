@@ -2,9 +2,10 @@ class Garden:
     def __init__(self, spots, cups=4, students=None):
         self.rows = spots.split()
         self.cups = cups
-        self.pots_in_row = self.cups//len(self.rows)
+        self.pots_in_row = self.cups // len(self.rows)
         if students is None:
-            students = ["Alice", "Bob", "Charlie", "David", "Eve", "Fred", "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"]
+            students = ["Alice", "Bob", "Charlie", "David", "Eve", "Fred",
+                        "Ginny", "Harriet", "Ileana", "Joseph", "Kincaid", "Larry"]
         students.sort()
         self.students = students
         self.plant_index = {"G": "Grass",

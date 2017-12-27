@@ -3,10 +3,10 @@ def map_clone(function, xs):
 
 
 def length(xs):
-    l = 0
+    len_ = 0
     for _ in xs:
-        l += 1
-    return l
+        len_ += 1
+    return len_
 
 
 def filter_clone(function, xs):

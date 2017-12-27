@@ -13,7 +13,7 @@ def evaluate(input_data):
             return int(last_word)
         if last_word in aliases:
             return process(words[:-1] + aliases[last_word])
-        if last_word not in operators and last_word not in aliases and not last_word.isdigit():
+        if last_word not in operators and not last_word.isdigit():
             raise ValueError
         if not len(words) > 1:
             raise StackUnderflowError
@@ -41,7 +41,6 @@ def evaluate(input_data):
         if last_word == '*':
             return process(words[:-2]) * int(words[-2])
 
-    operators = ['+', '-', '/', '*', 'dup', 'drop', 'over', 'swap']
     stack = []
     aliases = dict()
     for string in input_data:
@@ -54,5 +53,7 @@ def evaluate(input_data):
         else:
             for word in string.split():
                 stack.append(word)
+    operators = ['+', '-', '/', '*', 'dup', 'drop', 'over', 'swap']
+    operators += list(aliases)
     stack = process(stack)
     return stack if type(stack) is list else [stack]
