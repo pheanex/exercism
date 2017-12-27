@@ -9,4 +9,4 @@ def binary_search(search_list, element):
         else:
             return mid
         mid = (left + right) // 2
-    raise ValueError
+    raise ValueError('value not found')
