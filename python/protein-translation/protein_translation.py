@@ -17,13 +17,13 @@ def of_codon(codon):
     return codon_to_protein[codon]
 
 
-def of_rna(sequence):
-    proteins = []
+def proteins(sequence):
+    proteins_ = []
     for codon in map(of_codon, chunkstring(sequence, 3)):
         if codon == 'STOP':
             break
-        proteins.append(codon)
-    return proteins
+        proteins_.append(codon)
+    return proteins_
 
 
 def chunkstring(string, size):
