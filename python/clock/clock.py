@@ -3,9 +3,9 @@ class Clock(object):
         self.minutes = minute
         self.hours = hour
 
-    def __add__(self, other):
-        self.minutes += other.minutes
-        self.hours += other.hours
+    def __add__(self, minutes):
+        self.minutes += minutes
+        return self
 
     def __eq__(self, other):
         self_hour, self_minute = divmod(self.minutes, 60)
@@ -18,7 +18,3 @@ class Clock(object):
         hour, minute = divmod(self.minutes, 60)
         hour = (self.hours + hour) % 24
         return '{0:02d}:{1:02d}'.format(hour, minute)
-
-    def add(self, minutes):
-        self.minutes += minutes
-        return self
