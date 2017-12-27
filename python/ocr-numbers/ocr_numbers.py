@@ -11,7 +11,7 @@ ocr_numbers = {'0': (' _ ', '| |', '|_|', '   '),
 
 
 def convert(lines):
-    blocks = [lines[i:i+4] for i in range(0, len(lines), 4)]
+    blocks = [lines[i:i + 4] for i in range(0, len(lines), 4)]
     return ','.join(convert_block(block) for block in blocks)
 
 
