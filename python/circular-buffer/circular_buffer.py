@@ -7,14 +7,14 @@ class CircularBuffer:
 
     def read(self):
         if self.queue.empty():
-            raise BufferEmptyException
+            raise BufferEmptyException('Buffer empty')
         return self.queue.get()
 
     def write(self, element):
         if not self.queue.full():
             self.queue.put(element)
         else:
-            raise BufferFullException
+            raise BufferFullException('Buffer full')
 
     def overwrite(self, element):
         if self.queue.full():
