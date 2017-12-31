@@ -163,9 +163,8 @@ class ComplexNumbersTest(unittest.TestCase):
     def test_exponential_of_a_purely_real_number(self):
         input_number = ComplexNumber(1, 0)
         expected = ComplexNumber(math.e, 0)
-        actual = input_number.exp()
-        self.assertEqual(actual.real, expected.real)
-        self.assertEqual(actual.imaginary, expected.imaginary)
+        self.assertEqual(input_number.exp().real, expected.real)
+        self.assertEqual(input_number.exp().imaginary, expected.imaginary)
 
 
 if __name__ == '__main__':

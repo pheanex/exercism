@@ -1,7 +1,7 @@
 import unittest
+import random
 
 from robot_name import Robot
-import random
 
 
 class RobotTest(unittest.TestCase):
@@ -17,6 +17,7 @@ class RobotTest(unittest.TestCase):
 
     def test_name_sticks(self):
         robot = Robot()
+        robot.name
         self.assertEqual(robot.name, robot.name)
 
     def test_different_robots_have_different_names(self):
