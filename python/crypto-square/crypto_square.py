@@ -1,11 +1,12 @@
-from math import floor, sqrt, ceil
+from math import ceil
+from itertools import zip_longest
 
 
 def encode(message):
-    message = [l.lower() for l in message if l.isalnum()]
-    chunks = []
-    columns = floor(sqrt(len(message)))
-    rows = ceil(len(message) / columns) if columns > 0 else 0
-    for row in range(rows):
-        chunks.append(''.join([letter for index, letter in enumerate(message) if index % rows == row]))
+    message = ''.join(l.lower() for l in message if l.isalnum())
+    if not message:
+        return message
+    column_length = ceil(len(message) ** 0.5)
+    square = [message[i:i + column_length] for i in range(0, len(message), column_length)]
+    chunks = [''.join(chunk) for chunk in zip_longest(*square, fillvalue=' ')]
     return ' '.join(chunks)
