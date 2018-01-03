@@ -5,7 +5,7 @@ class Triangle:
            self.x + self.y <= self.z or\
            self.x + self.z <= self.y or\
            self.y + self.z <= self.x:
-            raise TriangleError
+            raise TriangleError('Illegal values')
 
     def kind(self):
         if self.x == self.y == self.z:
