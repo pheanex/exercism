@@ -2,7 +2,7 @@ def largest_product(string, length):
     if length == 0:
         return 1
     if not string or length < 0 or len(string) < length:
-        raise ValueError()
+        raise ValueError('String too short')
 
     max_product = 0
     for index in range(len(string) - length + 1):
