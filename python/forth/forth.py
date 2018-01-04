@@ -7,16 +7,16 @@ def evaluate(input_data):
         if not any(words):
             return []
         if not len(words) > 0:
-            raise StackUnderflowError
+            raise StackUnderflowError('Word missing')
         last_word = words[-1].lower()
         if len(words) == 1 and last_word.isdigit():
             return int(last_word)
         if last_word in aliases:
             return process(words[:-1] + aliases[last_word])
         if last_word not in operators and not last_word.isdigit():
-            raise ValueError
+            raise ValueError('Unknown operator or word missing')
         if not len(words) > 1:
-            raise StackUnderflowError
+            raise StackUnderflowError('Word missing')
         if last_word == "dup":
             if words[-2].isdigit():
                 return process(words[:-2] + [words[-2]] * 2)
@@ -27,7 +27,7 @@ def evaluate(input_data):
         if all(element.isdigit() for element in words):
             return [int(element) for element in words]
         if not len(words) > 2:
-            raise StackUnderflowError
+            raise StackUnderflowError('Word missing')
         if last_word == "over":
             return process(words[:-1] + [words[-3]])
         if last_word == "swap":
@@ -48,7 +48,7 @@ def evaluate(input_data):
             words = string.split()
             name, replacement = words[1].lower(), words[2:-1]
             if name.isdigit():
-                raise ValueError
+                raise ValueError('Digit cannot be an operator')
             aliases[name] = replacement
         else:
             for word in string.split():
