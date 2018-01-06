@@ -12,6 +12,8 @@ def is_prime(number):
 
 @lru_cache(maxsize=None)
 def nth_prime(position):
+    if not 0 < position:
+        raise ValueError('Invalid position')
     number = 2
     prime_count = 0
     while True:
