@@ -20,7 +20,7 @@ def reverse(xs):
 
 
 def append(xs, y):
-    return xs + [y]
+    return xs + y
 
 
 def foldl(function, xs, acc):
@@ -45,7 +45,5 @@ def flat(xs):
     return array
 
 
-def concat(xs, ys):
-    if ys:
-        return xs + ys
-    return xs
+def concat(lists):
+    return [s for l in lists for s in l]
