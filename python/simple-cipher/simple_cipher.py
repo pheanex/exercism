@@ -27,7 +27,7 @@ class Cipher:
     def __init__(self, key=''.join(random.choice(string.ascii_lowercase) for _ in range(100))):
         self.key = key
         if any(char.isdigit() or char.isupper() for char in self.key):
-            raise ValueError
+            raise ValueError('wrong key')
 
     def encode(self, message):
         return shift(message, self.key, True)
