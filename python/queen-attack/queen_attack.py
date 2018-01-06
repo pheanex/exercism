@@ -1,6 +1,6 @@
 def valid_position(white, black):
     if any(x for x in white + black if not 0 <= x < 8) or white == black:
-        raise ValueError
+        raise ValueError('Invalid position')
 
 
 def board(white, black):
