@@ -2,7 +2,7 @@ def saddle_points(matrix):
     row_length = len(matrix[0]) if len(matrix) else 0
     for row in matrix:
         if row_length != len(row):
-            raise ValueError
+            raise ValueError('irregular matrix')
 
     points = set()
     for row in matrix:
