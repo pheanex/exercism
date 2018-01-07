@@ -27,6 +27,8 @@ class Hand:
         counts, ranks = zip(*groups)
         flush = len(set([c for r, c in self.cards])) == 1
         straight = ''.join(self.ranks) in ''.join(Hand.card_ranks) or 'A' in self.ranks and ''.join(self.ranks[:-1]) in ''.join(Hand.card_ranks)
+        if straight and 'A' in self.ranks:
+            ranks = ranks[1:] + (ranks[0],)
         return (8 if straight and flush else
                 7 if counts == (4, 1) else
                 6 if counts == (3, 2) else
