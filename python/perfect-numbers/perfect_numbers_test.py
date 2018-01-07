@@ -22,11 +22,9 @@ class PerfectNumbersTest(unittest.TestCase):
     def test_fourth_perfect_number(self):
         self.assertIs(classify(8128), "perfect")
 
-    @unittest.skip
     def test_sixth_perfect_number(self):
         self.assertIs(classify(8589869056), "perfect")
 
-    @unittest.skip
     def test_seventh_perfect_number(self):
         self.assertIs(classify(137438691328), "perfect")
 
