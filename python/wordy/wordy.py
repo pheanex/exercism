@@ -1,18 +1,16 @@
-def is_number(word):
-    try:
-        float(word)
-        return True
-    except ValueError:
-        return False
-
-
 def calculate(text):
-    ops = dict(plus='+', minus='-', multiplied='*', divided='/')
-    task = [ops[w] if w in ops else w for w in text.rstrip('?').split() if is_number(w) or w in ops]
-    while len(task) != 1:
-        if not is_number(task[0]) or task[1] not in ops.values() or not is_number(task[2]):
-            raise ValueError
-        result = eval(''.join(task[0:3]))
-        task = task[3:]
-        task.insert(0, str(result))
-    return int(float(task[0]))
+    text = text.replace('plus', '+')
+    text = text.replace('minus', '-')
+    text = text.replace('multiplied by', '*')
+    text = text.replace('divided by', '/')
+    if not text.startswith('What is') or not text.endswith('?'):
+        raise ValueError('Malformed question')
+    text = text[len('What is'):-1].split()
+    while len(text) > 2:
+        try:
+            text.insert(0, str(eval(''.join([text.pop(0), text.pop(0), text.pop(0)]))))
+        except SyntaxError:
+            raise ValueError('Invalid Input')
+    if len(text) != 1:
+        raise ValueError('Invalid Input')
+    return int(float(text[0]))
