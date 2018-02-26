@@ -8,4 +8,4 @@ def word_count(sentence):
     for word in filter(None, split_sentence):
         word_counter[word] += 1
 
-    return dict(word_counter)
+    return word_counter
